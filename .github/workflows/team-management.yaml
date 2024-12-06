@@ -1,0 +1,25 @@
+name: Team management
+on:
+  # manual trigger
+  workflow_dispatch:
+  # push on main branch
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    if: github.repository == 'milliondollarideas/team-management'
+    name: Team sync
+    runs-on: ubuntu-latest
+    environment: team-management  
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      # Image build from cilium/team-manager PR with team mentors   
+      - uses: docker://quay.io/cilium/team-manager-ci:812447dff4e827f476cb3be3700eda3b032c4a84@sha256:32bd61a48e9169d9f9e9d91bc00a39fed2eea2a3d50996293ae8e9bdfd3a738b
+        name: Sync MillionDollarIdeas Teams
+        with:
+          entrypoint: team-manager
+          args: push --force --repositories=false --members=false --org=milliondollarideas --config-filename ./mdi-team-assignments.yaml
+        env:
+          GITHUB_TOKEN: ${{ secrets.MDI_ADMIN_ORG_TOKEN }}
