@@ -1,0 +1,69 @@
+organization: milliondollarideas
+repositories:
+  .github: {}
+  team-management:
+    WRITE:
+    - middle-management
+members:
+  joestringer:
+    id: MDQ6VXNlcjEyNDMzMzY=
+    name: Joe Stringer
+  jspaleta:
+    id: MDQ6VXNlcjM5OTM3
+    name: Jef Spaleta
+  xmulligan:
+    id: MDQ6VXNlcjI5MDQ4ODcw
+    name: Bill Mulligan
+teams:
+  Simulation Teams:
+    id: T_kwDOC1HSTc4Ase7l
+    restID: 11661029
+    description: This project is teaming with teams
+    members:
+    - jspaleta
+    privacy: VISIBLE
+    children:
+      sim-ci:
+        id: T_kwDOC1HSTc4Ase7z
+        restID: 11661043
+        description: 'Simulation CI contributors '
+        members:
+        - jspaleta
+        privacy: VISIBLE
+      simulants:
+        id: T_kwDOC1HSTc4Ase7q
+        restID: 11661034
+        description: Curling Simulation Developers
+        members:
+        - joestringer
+        - jspaleta
+        mentors:
+        - joestringer
+        codeReviewAssignment:
+          algorithm: ROUND_ROBIN
+          enabled: true
+          teamMemberCount: 1
+        privacy: VISIBLE
+  middle-management:
+    id: T_kwDOC1HSTc4Ase7V
+    restID: 11661013
+    description: Team Management Managers
+    members:
+    - jspaleta
+    - xmulligan
+    mentors:
+    - joestringer
+    codeReviewAssignment:
+      algorithm: ROUND_ROBIN
+      enabled: true
+      teamMemberCount: 1
+    privacy: VISIBLE
+  org-admins:
+    id: T_kwDOC1HSTc4Ase7y
+    restID: 11661042
+    description: org admins
+    members:
+    - jspaleta
+    privacy: VISIBLE
+excludeCodeReviewAssignmentFromAllTeams:
+- xmulligan
